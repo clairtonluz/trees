@@ -9,8 +9,8 @@ public class Solution {
     private static final InputTree INPUT_TREE = new InputTree();
 
     public static void main(String[] args) {
-//        Node root = INPUT_TREE.loadTreeFromStdin();
-        Node root = INPUT_TREE.loadTreeFromArray(Arrays.asList(1, 2, 5, 3, 6, 4));
+//        Node root = new InputTree().loadTreeFromStdin();
+        Node root = new InputTree().loadTreeFromArray(Arrays.asList(1, 2, 5, 3, 6, 4));
         levelOrder(root);
     }
 
