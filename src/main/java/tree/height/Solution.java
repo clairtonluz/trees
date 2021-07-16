@@ -1,4 +1,4 @@
-package treeHeight;
+package tree.height;
 
 import commons.InputTree;
 import commons.Node;

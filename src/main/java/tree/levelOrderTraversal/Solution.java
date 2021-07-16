@@ -1,4 +1,4 @@
-package treeLevelOrderTraversal;
+package tree.levelOrderTraversal;
 
 import commons.InputTree;
 import commons.Node;

@@ -1,4 +1,4 @@
-package treeTopView;
+package tree.topView;
 
 import commons.InputTree;
 import commons.Node;
