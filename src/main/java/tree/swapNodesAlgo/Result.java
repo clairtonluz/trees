@@ -32,9 +32,6 @@ public class Result {
                 queue.add(right);
             }
 
-            if (left == null && right == null) {
-                queue.add(node);
-            }
         });
 
         int levels = root.getHeight() + 1;

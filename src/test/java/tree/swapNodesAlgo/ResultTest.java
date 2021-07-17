@@ -1,8 +1,13 @@
 package tree.swapNodesAlgo;
 
+import commons.InputReader;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -88,4 +93,43 @@ class ResultTest {
                 .map(Objects::toString)
                 .collect(Collectors.joining(" ")));
     }
+
+
+    @Test
+    void testCase4() {
+        var fileLines = InputReader.readLines(getClass().getResource("testCase4.txt").getPath());
+        var resultExpected = InputReader.readLines(getClass().getResource("testCase4-result.txt").getPath());
+
+        var amountIndexes = Integer.parseInt(fileLines.get(0));
+        var indexes = fileLines
+                .subList(1, amountIndexes + 1)
+                .stream()
+                .map(line -> Arrays.stream(line
+                        .replaceAll("\\s+$", "")
+                        .split(" "))
+                        .map(Integer::parseInt)
+                        .collect(Collectors.toList())
+                ).collect(Collectors.toList());
+
+        Assertions.assertEquals(amountIndexes, indexes.size());
+
+        var amountQueries = Integer.parseInt(fileLines.get(amountIndexes + 1));
+        var queries = fileLines
+                .subList(amountIndexes + 2, fileLines.size())
+                .stream()
+                .map(line -> line.replaceAll("\\s+$", ""))
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
+        Assertions.assertEquals(amountQueries, queries.size());
+
+        var result = Result.swapNodes(indexes, queries);
+
+        Assertions.assertEquals(resultExpected.size(), result.size());
+        for (var i = 0; i < resultExpected.size(); i++) {
+            var resultAsString = result.get(i).stream().map(Object::toString).collect(Collectors.joining(" "));
+            Assertions.assertEquals(resultExpected.get(i), resultAsString);
+        }
+    }
+
+
 }
